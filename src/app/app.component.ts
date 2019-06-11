@@ -7,6 +7,7 @@ import {SearchService} from './search.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+  artist = '';
   result: string[];
   constructor(private search: SearchService) {
   }
