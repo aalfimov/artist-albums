@@ -1,4 +1,4 @@
-<<div id="searchBar" class="navbar">
+<div id="searchBar" class="navbar">
   <h1>Album Search</h1>
   <div class="input-group">
     <form>
@@ -6,8 +6,35 @@
         <input type="text" placeholder="Search.." class="form-control" [(ngModel)]="artist"
                [ngModelOptions]="{standalone: true}">
       </label>
-      <button (click)="getSearch()" class="btn btn-dark" type="submit"><i class="fa fa-search"></i></button>
+      <button (click)="getSearch()" type="submit">Search</button>
     </form>
   </div>
 </div>
+<div *ngIf="result">
+  <div class="row">
+    <ng-container *ngFor="let data of result.data">
+      <div class="col-md-2 contact-details box">
+        <a class="nav-link" href="{{data.link}}">
+          <img src="{{data.artist.picture_small}}" class="img-fluid leftfoto" alt="Artist">
+          <h3>{{data.artist.name}}</h3>
+          <h4>{{data.title}}</h4>
+          <img src="{{data.album.cover_medium}}" class="img-fluid" alt="Cover">
+        </a>
+      </div>
+      <script>console.log(data)</script>
+    </ng-container>
+  </div>
+<!--  <div class="row">-->
+<!--    <ng-container *ngFor="let data of responseItunes.results | uniqueDataItunes">-->
+<!--      <a class="nav-link" href="{{data.artistViewUrl}}">-->
+<!--        <div class="col-md contact-details box">-->
+<!--          <img src="{{data.artworkUrl100}}" class="img-fluid leftfoto" alt="Artist">-->
+<!--          <h3>{{data.artistName}}</h3>-->
+<!--          <h4>{{data.collectionName}}</h4>-->
+<!--        </div>-->
+<!--      </a>-->
+<!--    </ng-container>-->
+<!--  </div>-->
+</div>
+
 <router-outlet></router-outlet>

@@ -7,18 +7,17 @@ import {SearchService} from './search.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  artist = '';
-  result: string[];
-  constructor(private search: SearchService) {
+  constructor(private service: SearchService) {
   }
-
+  artist = '';
+  result: object;
   ngOnInit() {
     console.log('let\'s start');
   }
 
   getSearch() {
-    this.search.getSearch();
-    this.result = this.search.result;
+    this.service.getSearch(this.artist);
+    this.result = this.service.response;
     console.log(this.result);
   }
 }
