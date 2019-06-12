@@ -9,15 +9,15 @@ import {SearchService} from './search.service';
 export class AppComponent implements OnInit {
   constructor(private service: SearchService) {
   }
-  artist = '';
-  result: object;
+  private artist = '';
+  private result: object;
   ngOnInit() {
     console.log('let\'s start');
   }
 
   getSearch() {
     this.service.getSearch(this.artist);
-    this.result = this.service.response;
+    this.result = this.service.getResults();
     console.log(this.result);
   }
 }
