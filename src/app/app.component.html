@@ -1,40 +1,30 @@
 <div id="searchBar" class="navbar">
   <h1>Album Search</h1>
   <div class="input-group">
-    <form>
+    <form id="artist">
       <label>
-        <input type="text" placeholder="Search.." class="form-control" [(ngModel)]="artist"
-               [ngModelOptions]="{standalone: true}">
+        <input [(ngModel)]="artist" name="search" placeholder="Search.." type="text">
       </label>
-      <button (click)="getSearch()" type="submit">Search</button>
     </form>
+    <button form="artist" (click)="getSearch()" type="submit">Submit</button>
   </div>
 </div>
 <div *ngIf="result">
   <div class="row">
-    <ng-container *ngFor="let data of result.data">
+    <ng-container *ngFor="let id of result">
+<!--      <script>console.log(id)</script>-->
       <div class="col-md-2 contact-details box">
-        <a class="nav-link" href="{{data.link}}">
-          <img src="{{data.artist.picture_small}}" class="img-fluid leftfoto" alt="Artist">
-          <h3>{{data.artist.name}}</h3>
-          <h4>{{data.title}}</h4>
-          <img src="{{data.album.cover_medium}}" class="img-fluid" alt="Cover">
+        <a class="nav-link" href="{{id.link}}">
+          <img src="{{id.albumCover}}" class="img-fluid leftfoto" alt="Artist">
+          <h3>{{id.artistName}}</h3>
+          <h4>{{id.title}}</h4>
         </a>
       </div>
       <script>console.log(data)</script>
     </ng-container>
   </div>
-<!--  <div class="row">-->
-<!--    <ng-container *ngFor="let data of responseItunes.results | uniqueDataItunes">-->
-<!--      <a class="nav-link" href="{{data.artistViewUrl}}">-->
-<!--        <div class="col-md contact-details box">-->
-<!--          <img src="{{data.artworkUrl100}}" class="img-fluid leftfoto" alt="Artist">-->
-<!--          <h3>{{data.artistName}}</h3>-->
-<!--          <h4>{{data.collectionName}}</h4>-->
-<!--        </div>-->
-<!--      </a>-->
-<!--    </ng-container>-->
-<!--  </div>-->
 </div>
+
+<!--<app-response-view [viewData]="result"></app-response-view> -->
 
 <router-outlet></router-outlet>
