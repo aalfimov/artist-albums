@@ -5,10 +5,3 @@ export interface DeezerResponse {
   next: string;
   total: number;
 }
-
-export interface ResultsListItem {
-  link: string;
-  title: string;
-  artistName: string;
-  albumCover: string;
-}

@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {SearchService} from './search.service';
-import {ResultsListItem} from './interfaces/deezer-response.interface';
 import {DeezerSearchItem} from './interfaces/deezer-search-item.interface';
+import {ResultsListItem} from './interfaces/result-list-item.interface';
+import {ItunesSearchItem} from './interfaces/itunes-search-item.interfase';
 
 @Component({
   selector: 'app-root',
@@ -12,12 +13,10 @@ export class AppComponent implements OnInit {
   constructor(private service: SearchService) {
   }
 
-  readonly ITUNES_URL = 'https://cors-anywhere.herokuapp.com/https://itunes.apple.com/search?term=';
-  readonly DEEZER_URL = 'https://cors-anywhere.herokuapp.com/https://api.deezer.com/search?q=';
   private artist = '';
-  result: ResultsListItem[];
-
-  mergedResult: ResultsListItem[];
+  resultFromDeezer: ResultsListItem[];
+  resultFromItunes: ResultsListItem[];
+  mergedResult = Array.prototype.push.apply(this.resultFromDeezer, this.resultFromItunes);
 
 
   ngOnInit() {
@@ -25,13 +24,28 @@ export class AppComponent implements OnInit {
   }
 
   getSearch() {
-    this.service.getSearch(this.DEEZER_URL + this.artist).subscribe(result => {
-      this.result = AppComponent.convertResult(result.data);
-      console.log(this.result);
+    this.service.getSearchFromDeezer(this.artist).subscribe(result => {
+      this.resultFromDeezer = this.convertResultFromDeezer(result.data);
+      console.log(this.resultFromDeezer);
+    });
+    this.service.getSearchFromItunes(this.artist).subscribe(result => {
+      this.resultFromItunes = this.convertResultFromItunes(result.results);
+      console.log(this.resultFromItunes);
     });
   }
 
-  private convertResult(data: DeezerSearchItem[]): ResultsListItem[] {
+  convertResultFromItunes(data: ItunesSearchItem[]): ResultsListItem[] {
+    return data.map(searchItem => {
+      return {
+        link: searchItem.artistViewUrl,
+        title: searchItem.collectionName,
+        artistName: searchItem.artistName,
+        albumCover: searchItem.artworkUrl100
+      };
+    });
+  }
+
+  convertResultFromDeezer(data: DeezerSearchItem[]): ResultsListItem[] {
     return data.map(searchItem => {
       return {
         link: searchItem.link,
