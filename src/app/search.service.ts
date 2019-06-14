@@ -18,14 +18,6 @@ export class SearchService {
   readonly ITUNES_URL = 'https://itunes.apple.com/search';
   private mergedResult: ResultsListItem[];
 
-  getSearchFromDeezer(artist: string): Observable<DeezerResponse> {
-    return this.http.jsonp<DeezerResponse>(`${this.DEEZER_URL}?q=${artist}&output=jsonp`, 'callback');
-  }
-
-  getSearchFromItunes(artist: string): Observable<ItunesResponse> {
-    return this.http.jsonp<ItunesResponse>(`${this.ITUNES_URL}?term=${artist}`, 'callback');
-  }
-
   getSearch(artist: string) {
 
     const deezerSubscription = this.getSearchFromDeezer(artist).pipe(catchError(() => of({
@@ -48,12 +40,15 @@ export class SearchService {
           this.processingService.convertResultFromItunes(itunes.results)
         ];
 
-        console.log(normalizedData);
-
         this.mergedResult = this.processingService.mergeData(normalizedData[0], normalizedData[1]);
-
-        console.log(this.mergedResult);
       });
     return this.mergedResult;
+  }
+  getSearchFromDeezer(artist: string): Observable<DeezerResponse> {
+    return this.http.jsonp<DeezerResponse>(`${this.DEEZER_URL}?q=${artist}&output=jsonp`, 'callback');
+  }
+
+  getSearchFromItunes(artist: string): Observable<ItunesResponse> {
+    return this.http.jsonp<ItunesResponse>(`${this.ITUNES_URL}?term=${artist}`, 'callback');
   }
 }

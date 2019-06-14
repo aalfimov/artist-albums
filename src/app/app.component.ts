@@ -21,7 +21,9 @@ export class AppComponent implements OnInit {
   getSearch() {
     this.mergedResult = this.searchService.getSearch(this.artist);
   }
-
+  // home work: https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Promise
+  // https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Object/assign
+  // https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Async_await
   // getSearch() {
   //
   //   const deezerSubscription = this.searchService.getSearchFromDeezer(this.artist).pipe(catchError(() => of({

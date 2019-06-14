@@ -32,8 +32,6 @@ export class ProcessingResultsService {
   }
 
   mergeData(resultFromDeezer: ResultsListItem[], resultFromItunes: ResultsListItem[]) {
-    // return resultFromDeezer.concat(resultFromItunes);
-    // return push.apply(resultFromDeezer, resultFromItunes);
     return [...resultFromDeezer, ...resultFromItunes];
   }
 }
