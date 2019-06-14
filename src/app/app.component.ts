@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {SearchService} from './search.service';
-import {DeezerSearchItem} from './interfaces/deezer-search-item.interface';
 import {ResultsListItem} from './interfaces/result-list-item.interface';
-import {ItunesSearchItem} from './interfaces/itunes-search-item.interfase';
+import {forkJoin, of} from 'rxjs';
+import {catchError} from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -10,49 +10,49 @@ import {ItunesSearchItem} from './interfaces/itunes-search-item.interfase';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  constructor(private service: SearchService) {
+  constructor(private searchService: SearchService) {
   }
 
   private artist = '';
   resultFromDeezer: ResultsListItem[];
   resultFromItunes: ResultsListItem[];
-  mergedResult = Array.prototype.push.apply(this.resultFromDeezer, this.resultFromItunes);
-
+  mergedResult: ResultsListItem[];
 
   ngOnInit() {
     console.log('let\'s start');
   }
 
   getSearch() {
-    this.service.getSearchFromDeezer(this.artist).subscribe(result => {
-      this.resultFromDeezer = this.convertResultFromDeezer(result.data);
-      console.log(this.resultFromDeezer);
-    });
-    this.service.getSearchFromItunes(this.artist).subscribe(result => {
-      this.resultFromItunes = this.convertResultFromItunes(result.results);
-      console.log(this.resultFromItunes);
-    });
-  }
+    // this.searchService.getSearchFromDeezer(this.artist)
+    //   .toPromise()
+    //   .then(result =>
+    //     this.resultFromDeezer = ProcessingResultsService.convertResultFromDeezer(result.data));
+    //
+    // this.searchService.getSearchFromItunes(this.artist)
+    //   .toPromise()
+    //   .then(result =>
+    //     this.resultFromItunes = ProcessingResultsService.convertResultFromItunes(result.results));
+    // console.log(this.resultFromDeezer, this.resultFromItunes);
+    // const myFirstPromise = new Promise().then(console.log);
+    const deezerSubscription = this.searchService.getSearchFromDeezer(this.artist).pipe(catchError(() => of([])));
+    const itunesSubscription = this.searchService.getSearchFromItunes(this.artist).pipe(catchError(() => of([])));
 
-  convertResultFromItunes(data: ItunesSearchItem[]): ResultsListItem[] {
-    return data.map(searchItem => {
-      return {
-        link: searchItem.artistViewUrl,
-        title: searchItem.collectionName,
-        artistName: searchItem.artistName,
-        albumCover: searchItem.artworkUrl100
-      };
+    forkJoin([deezerSubscription, itunesSubscription])
+      .subscribe(value => {
+        // this.mergedResult = ProcessingResultsService.mergeData(this.resultFromDeezer, this.resultFromItunes);
+      console.log(value);
     });
-  }
 
-  convertResultFromDeezer(data: DeezerSearchItem[]): ResultsListItem[] {
-    return data.map(searchItem => {
-      return {
-        link: searchItem.link,
-        title: searchItem.title,
-        artistName: searchItem.artist.name,
-        albumCover: searchItem.album.cover
-      };
-    });
+
+    // this.searchService.getSearchFromDeezer(this.artist).subscribe(result => {
+    //   this.resultFromDeezer = ProcessingResultsService.convertResultFromDeezer(result.data);
+    //   console.log(this.resultFromDeezer, 'deezer');
+    //
+    // });
+    //
+    // this.searchService.getSearchFromItunes(this.artist).subscribe(result => {
+    //   this.resultFromItunes = ProcessingResultsService.convertResultFromItunes(result.results);
+    //   console.log(this.resultFromItunes, 'itunes');
+    // });
   }
 }
