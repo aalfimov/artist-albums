@@ -13,13 +13,10 @@ import {ItunesResponse} from './interfaces/itunes-response.interfase';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  // tslint:disable-next-line:no-shadowed-variable
   constructor(private searchService: SearchService, private processingService: ProcessingResultsService) {
   }
 
   private artist = '';
-  resultFromDeezer: ResultsListItem[];
-  resultFromItunes: ResultsListItem[];
   mergedResult: ResultsListItem[];
 
   ngOnInit() {
