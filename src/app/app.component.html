@@ -9,9 +9,9 @@
     <button form="artist" (click)="getSearch()" type="submit">Search</button>
   </div>
 </div>
-<div *ngIf="mergedResult">
+<div *ngIf="mergedSortedResult">
   <div class="row">
-    <ng-container *ngFor="let id of mergedResult">
+    <ng-container *ngFor="let id of mergedSortedResult">
       <script>console.log(id)</script>
       <div id="content-box" class="col-md-2 contact-details box">
         <a class="nav-link" href="{{id.link}}">
