@@ -31,15 +31,15 @@ export class SearchService {
     } as ItunesResponse)));
 
     return forkJoin([deezerSubscription, itunesSubscription]).pipe(map(response => {
-        const deezer = response[0];
-        const itunes = response[1];
+      const deezer = response[0];
+      const itunes = response[1];
 
-        const normalizedData = [
-          this.processingService.convertResultFromDeezer(deezer.data),
-          this.processingService.convertResultFromItunes(itunes.results)
-        ];
+      const normalizedData = [
+        this.processingService.convertResultFromDeezer(deezer.data),
+        this.processingService.convertResultFromItunes(itunes.results)
+      ];
 
-        return this.mergedResult = this.processingService.mergeData(normalizedData[0], normalizedData[1]);
+      return this.mergedResult = this.processingService.mergeData(normalizedData[0], normalizedData[1]);
     }));
   }
 
