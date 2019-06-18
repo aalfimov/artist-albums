@@ -44,6 +44,7 @@ export class SearchService {
       });
     return this.mergedResult;
   }
+
   getSearchFromDeezer(artist: string): Observable<DeezerResponse> {
     return this.http.jsonp<DeezerResponse>(`${this.DEEZER_URL}?q=${artist}&output=jsonp`, 'callback');
   }

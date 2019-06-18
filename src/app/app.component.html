@@ -12,7 +12,8 @@
 <div *ngIf="mergedResult">
   <div class="row">
     <ng-container *ngFor="let id of mergedResult">
-      <div class="col-md-2 contact-details box">
+      <script>console.log(id)</script>
+      <div id="content-box" class="col-md-2 contact-details box">
         <a class="nav-link" href="{{id.link}}">
           <img src="{{id.albumCover}}" class="img-fluid leftfoto" alt="Artist">
           <h3>{{id.artistName}}</h3>

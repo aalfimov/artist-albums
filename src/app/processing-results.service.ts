@@ -2,13 +2,15 @@ import {Injectable} from '@angular/core';
 import {DeezerSearchItem} from './interfaces/deezer-search-item.interface';
 import {ResultsListItem} from './interfaces/result-list-item.interface';
 import {ItunesSearchItem} from './interfaces/itunes-search-item.interfase';
+import * as _ from 'lodash';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProcessingResultsService {
 
-  constructor() { }
+  constructor() {
+  }
 
   convertResultFromItunes(data: ItunesSearchItem[]) {
     return data.map(searchItem => {
@@ -20,6 +22,7 @@ export class ProcessingResultsService {
       } as ResultsListItem;
     });
   }
+
   convertResultFromDeezer(data: DeezerSearchItem[]) {
     return data.map(searchItem => {
       return {
@@ -31,7 +34,12 @@ export class ProcessingResultsService {
     });
   }
 
-  mergeData(resultFromDeezer: ResultsListItem[], resultFromItunes: ResultsListItem[]) {
-    return [...resultFromDeezer, ...resultFromItunes];
+  sortData(value: ResultsListItem[]): ResultsListItem[] {
+    return value !== undefined && value !== null ? _.uniqBy(value, 'title') : value;
   }
+
+  mergeData(resultFromDeezer: ResultsListItem[], resultFromItunes: ResultsListItem[]) {
+    return this.sortData([...resultFromDeezer, ...resultFromItunes]);
+  }
+
 }

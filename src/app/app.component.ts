@@ -12,45 +12,13 @@ export class AppComponent implements OnInit {
   }
 
   private artist = '';
-  mergedResult: ResultsListItem[];
+  mergedSortedResult: ResultsListItem[];
 
   ngOnInit() {
     console.log('let\'s start');
   }
 
   getSearch() {
-    this.mergedResult = this.searchService.getSearch(this.artist);
+    this.mergedSortedResult = this.searchService.getSearch(this.artist);
   }
-  // home work: https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Promise
-  // https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Object/assign
-  // https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Async_await
-  // getSearch() {
-  //
-  //   const deezerSubscription = this.searchService.getSearchFromDeezer(this.artist).pipe(catchError(() => of({
-  //     data: [],
-  //     next: null,
-  //     total: 0
-  //   } as DeezerResponse)));
-  //   const itunesSubscription = this.searchService.getSearchFromItunes(this.artist).pipe(catchError(() => of({
-  //     resultCount: 0,
-  //     results: []
-  //   } as ItunesResponse)));
-  //
-  //   forkJoin([deezerSubscription, itunesSubscription])
-  //     .subscribe(response => {
-  //       const deezer = response[0];
-  //       const itunes = response[1];
-  //
-  //       const normalizedData = [
-  //         this.processingService.convertResultFromDeezer(deezer.data),
-  //         this.processingService.convertResultFromItunes(itunes.results)
-  //       ];
-  //
-  //       console.log(normalizedData);
-  //
-  //       this.mergedResult = this.processingService.mergeData(normalizedData[0], normalizedData[1]);
-  //
-  //       console.log(this.mergedResult);
-  //     });
-  // }
 }
