@@ -1,14 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ResultsListItem} from '../interfaces/result-list-item.interface';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {SearchService} from '../search.service';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  selector: 'app-search-album',
+  templateUrl: './search-albums.component.html',
+  styleUrls: ['./search-albums.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class SearchAlbumsComponent implements OnInit {
   result: ResultsListItem[];
 
   searchForm: FormGroup;
@@ -26,7 +26,6 @@ export class HomeComponent implements OnInit {
     this.searchForm = this.builder.group({
       artistName: ['', Validators.required]
     });
-
   }
 
   getSearch({value, valid}) {
@@ -34,6 +33,7 @@ export class HomeComponent implements OnInit {
       console.error('invalid value');
       return;
     }
+    // this.router.navigateByUrl();
     this.searchService.getSearch(value.artistName).subscribe(searchResult => {
       this.result = searchResult;
     });
