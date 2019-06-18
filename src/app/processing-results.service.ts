@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {DeezerSearchItem} from './interfaces/deezer-search-item.interface';
 import {ResultsListItem} from './interfaces/result-list-item.interface';
 import {ItunesSearchItem} from './interfaces/itunes-search-item.interfase';
-import * as _ from 'lodash';
+import { uniqBy } from 'lodash';
 
 @Injectable({
   providedIn: 'root'
@@ -35,7 +35,7 @@ export class ProcessingResultsService {
   }
 
   sortData(value: ResultsListItem[]): ResultsListItem[] {
-    return value !== undefined && value !== null ? _.uniqBy(value, 'title') : value;
+    return value !== undefined && value !== null ? uniqBy(value, 'title') : value;
   }
 
   mergeData(resultFromDeezer: ResultsListItem[], resultFromItunes: ResultsListItem[]) {

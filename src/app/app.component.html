@@ -1,17 +1,17 @@
 <div id="searchBar" class="navbar">
   <h1>Album Search</h1>
   <div class="input-group">
-    <form id="artist">
-      <label>
-        <input [(ngModel)]="artist" name="search" placeholder="Search.." type="text">
-      </label>
-    </form>
-    <button form="artist" (click)="getSearch()" type="submit">Search</button>
+        <form id="artist" [formGroup]="searchForm" (submit)="getSearch(searchForm)">
+          <label>
+            <input formControlName="artistName" name="search" placeholder="Search.." type="text">
+          </label>
+          <button form="artist" type="submit">Search</button>
+        </form>
   </div>
 </div>
-<div *ngIf="mergedSortedResult">
+<div *ngIf="result">
   <div class="row">
-    <ng-container *ngFor="let id of mergedSortedResult">
+    <ng-container *ngFor="let id of result">
       <script>console.log(id)</script>
       <div id="content-box" class="col-md-2 contact-details box">
         <a class="nav-link" href="{{id.link}}">

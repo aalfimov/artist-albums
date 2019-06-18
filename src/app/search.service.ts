@@ -3,7 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {DeezerResponse} from './interfaces/deezer-response.interface';
 import {forkJoin, Observable, of} from 'rxjs';
 import {ItunesResponse} from './interfaces/itunes-response.interfase';
-import {catchError} from 'rxjs/operators';
+import {catchError, map} from 'rxjs/operators';
 import {ProcessingResultsService} from './processing-results.service';
 import {ResultsListItem} from './interfaces/result-list-item.interface';
 
@@ -30,8 +30,7 @@ export class SearchService {
       results: []
     } as ItunesResponse)));
 
-    forkJoin([deezerSubscription, itunesSubscription])
-      .subscribe(response => {
+    return forkJoin([deezerSubscription, itunesSubscription]).pipe(map(response => {
         const deezer = response[0];
         const itunes = response[1];
 
@@ -40,9 +39,8 @@ export class SearchService {
           this.processingService.convertResultFromItunes(itunes.results)
         ];
 
-        this.mergedResult = this.processingService.mergeData(normalizedData[0], normalizedData[1]);
-      });
-    return this.mergedResult;
+        return this.mergedResult = this.processingService.mergeData(normalizedData[0], normalizedData[1]);
+    }));
   }
 
   getSearchFromDeezer(artist: string): Observable<DeezerResponse> {
