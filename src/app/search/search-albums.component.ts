@@ -12,16 +12,20 @@ export class SearchAlbumsComponent implements OnInit {
 
   searchForm: FormGroup;
   artistName: string;
+
   constructor(private builder: FormBuilder) {
   }
+
   ngOnInit() {
     this.initForm();
   }
+
   private initForm() {
     this.searchForm = this.builder.group({
       artistName: ['', Validators.required]
     });
   }
+
   getSearch({value, valid}) {
     if (!valid) {
       console.error('invalid value');

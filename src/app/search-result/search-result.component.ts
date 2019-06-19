@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ResultsListItem} from '../interfaces/result-list-item.interface';
 import {ActivatedRoute} from '@angular/router';
 

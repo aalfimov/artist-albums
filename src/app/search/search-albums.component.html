@@ -1,4 +1,4 @@
-<div id="searchBar" class="navbar">
+<nav id="searchBar" class="navbar-default">
   <h1>Album Search</h1>
   <div class="input-group">
     <form id="artist" [formGroup]="searchForm" (submit)="getSearch(searchForm)">
@@ -8,20 +8,4 @@
       <button form="artist" type="submit">Search</button>
     </form>
   </div>
-</div>
-<!--<div *ngIf="result">-->
-<!--  <div class="row">-->
-<!--    <ng-container class="col-sm-6 col-md-4" *ngFor="let id of result">-->
-<!--      <script>console.log(id)</script>-->
-<!--      <div id="content-box" class="col-md-2 contact-details box">-->
-<!--        <a class="nav-link" href="{{id.link}}">-->
-<!--          <img src="{{id.albumCover}}" class="img-fluid leftfoto" alt="Artist">-->
-<!--          <h3>{{id.artistName}}</h3>-->
-<!--          <h4>{{id.title}}</h4>-->
-<!--        </a>-->
-<!--      </div>-->
-<!--      <script>console.log(data)</script>-->
-<!--    </ng-container>-->
-<!--  </div>-->
-<!--</div>-->
-
+</nav>
