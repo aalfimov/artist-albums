@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ResultsListItem} from '../interfaces/result-list-item.interface';
-import {ActivatedRoute, Router} from '@angular/router';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-search-result',
