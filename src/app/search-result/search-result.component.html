@@ -1,0 +1,16 @@
+<div *ngIf="result">
+  <div class="row">
+    <ng-container class="col-sm-6 col-md-4" *ngFor="let id of result">
+      <script>console.log(id)</script>
+      <div id="content-box" class="col-md-2 contact-details box">
+        <a class="nav-link" href="{{id.link}}">
+          <img src="{{id.albumCover}}" class="img-fluid leftfoto" alt="Artist">
+          <h3>{{id.artistName}}</h3>
+          <h4>{{id.title}}</h4>
+        </a>
+      </div>
+      <script>console.log(data)</script>
+    </ng-container>
+  </div>
+</div>
+<app-page-not-found *ngIf="noData()"></app-page-not-found>
