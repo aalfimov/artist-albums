@@ -7,13 +7,15 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientJsonpModule, HttpClientModule} from '@angular/common/http';
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {SearchAlbumsComponent} from './search/search-albums.component';
+import { SearchResultComponent } from './search-result/search-result.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     PageNotFoundComponent,
-    SearchAlbumsComponent
+    SearchAlbumsComponent,
+    SearchResultComponent
   ],
   imports: [
     BrowserModule,

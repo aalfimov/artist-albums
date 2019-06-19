@@ -17,6 +17,7 @@ export class SearchService {
   readonly DEEZER_URL = 'https://api.deezer.com/search';
   readonly ITUNES_URL = 'https://itunes.apple.com/search';
   private mergedResult: ResultsListItem[];
+  artistName: string;
 
   getSearch(artist: string) {
 

@@ -1,12 +1,16 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
-import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
-import {SearchAlbumsComponent} from './search/search-albums.component';
+import {SearchResultComponent} from './search-result/search-result.component';
+import {SearchResultResolver} from './search-result/search-result-resolver.service';
 
 const routes: Routes = [
-  {path: '', redirectTo: '/search', pathMatch: 'full'},
-  {path: 'search', component: SearchAlbumsComponent},
-  {path: '**', component: PageNotFoundComponent}
+  {
+    path: 'search/:artist',
+    component: SearchResultComponent,
+    resolve: {
+      resultsList: SearchResultResolver
+    }
+  }
 ];
 
 @NgModule({

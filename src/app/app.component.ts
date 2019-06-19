@@ -1,4 +1,6 @@
 import {Component} from '@angular/core';
+import {SearchService} from './search.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -6,6 +8,12 @@ import {Component} from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  constructor() {
+
+  constructor(private searchService: SearchService,
+              private router: Router) {
+  }
+
+  getSearch(searchPhrase: string) {
+    this.router.navigate(['search', `${searchPhrase}`]);
   }
 }
