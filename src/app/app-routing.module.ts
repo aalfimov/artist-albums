@@ -5,7 +5,7 @@ import {SearchResultResolver} from './search-result/search-result-resolver.servi
 
 const routes: Routes = [
   {
-    path: 'search/:artist',
+    path: 'search',
     component: SearchResultComponent,
     resolve: {
       resultsList: SearchResultResolver

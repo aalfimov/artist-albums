@@ -1,11 +1,19 @@
-<nav id="searchBar" class="navbar-default">
+<nav id="searchBar" class="navbar">
   <h1>Album Search</h1>
   <div class="input-group">
     <form id="artist" [formGroup]="searchForm" (submit)="getSearch(searchForm)">
-      <label>
-        <input formControlName="artistName" name="search" placeholder="Search.." type="text">
-      </label>
-      <button form="artist" type="submit">Search</button>
+<!--      <label>-->
+<!--        <input formControlName="artistName" name="search" placeholder="Search.." type="text">-->
+<!--      </label>-->
+<!--      <button type="submit" class="btn btn-info" form="artist">Search</button>-->
+      <div class="input-group mb-3">
+        <label>
+          <input formControlName="artistName" type="text" class="form-control" placeholder="artist name" aria-describedby="button-addon2">
+        </label>
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary" type="submit" id="button-addon2" form="artist">Search</button>
+        </div>
+      </div>
     </form>
   </div>
 </nav>

@@ -14,6 +14,10 @@ export class AppComponent {
   }
 
   getSearch(searchPhrase: string) {
-    this.router.navigate(['search', `${searchPhrase}`]);
+    this.router.navigate(['search'], {
+      queryParams: {
+        artistName: searchPhrase
+      }
+    });
   }
 }

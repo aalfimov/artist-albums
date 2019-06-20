@@ -13,7 +13,7 @@ export class SearchResultResolver implements Resolve<Observable<ResultsListItem[
   }
 
   resolve(route: ActivatedRouteSnapshot): Observable<ResultsListItem[]> {
-    const searchName = route.paramMap.get('artist');
+    const searchName = route.queryParamMap.get('artistName');
     return this.searchService.getSearch(searchName);
   }
 }
