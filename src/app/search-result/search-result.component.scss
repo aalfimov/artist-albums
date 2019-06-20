@@ -1,30 +1,17 @@
-//.box {
-//  // display: flex;
-//  align-items: center;
-//  justify-content: center;
-//  margin: 5px;
-//  border-radius: 5px;
-//
-//  .box:hover {
-//    background-color: #fbedff;
-//  }
-//}
-//
-//#content-box {
-//  float: left;
-//  margin: 10px;
-//  padding: 6px;
-//}
-//
-//.leftfoto {
-//  float: left;
-//  padding: 6px;
-//}
-//
 #content-box {
   background-color: #dddddd;
   border-radius: 5px;
-  margin: 15px;
-  box-shadow: 0 0 8px 2px rgba(0,0,0,0.75);
+  margin: 20px;
+  box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.75);
+  cursor: pointer;
+
+  &:hover {
+    transition: .3s ease-in-out;
+    transform: scale(1.1);
+
+    img {
+      filter: blur(0);
+    }
+  }
 }
 
