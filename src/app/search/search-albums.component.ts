@@ -14,26 +14,15 @@ export class SearchAlbumsComponent implements OnInit {
   searchForm: FormGroup;
   artistName: string;
 
-  // route: ActivatedRouteSnapshot;
-
   constructor(private builder: FormBuilder, private route: ActivatedRoute) {
   }
 
   ngOnInit() {
     this.initForm();
-    this.route.paramMap.subscribe(params => {
+    this.route.queryParamMap.subscribe(params => {
       this.updateValue(params.get('artistName'));
     });
   }
-
-  // getRout(route: ActivatedRouteSnapshot) {
-  //   return route.queryParamMap.get('artistName');
-  // }
-  // this.route.params
-  //   .switchMap((params: Params) => this.survey.getSurvey(params['artist']))
-  //   .subscribe((survey: any) => {
-  //     // update the form controls
-  //   });
   private initForm() {
     this.searchForm = this.builder.group({
       artistName: ['', Validators.required]
@@ -50,6 +39,5 @@ export class SearchAlbumsComponent implements OnInit {
       return;
     }
     this.searchPhrase.emit(value.artistName);
-    // this.updateValue('abba');
   }
 }
