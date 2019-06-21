@@ -3,4 +3,5 @@ export interface ResultsListItem {
   title: string;
   artistName: string;
   albumCover: string;
+  preview: string;
 }

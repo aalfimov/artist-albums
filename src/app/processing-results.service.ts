@@ -18,7 +18,8 @@ export class ProcessingResultsService {
         link: searchItem.artistViewUrl,
         title: searchItem.collectionName,
         artistName: searchItem.artistName,
-        albumCover: searchItem.artworkUrl100
+        albumCover: searchItem.artworkUrl100,
+        preview: searchItem.previewUrl
       } as ResultsListItem;
     });
   }
@@ -29,7 +30,8 @@ export class ProcessingResultsService {
         link: searchItem.link,
         title: searchItem.title,
         artistName: searchItem.artist.name,
-        albumCover: searchItem.album.cover
+        albumCover: searchItem.album.cover,
+        preview: searchItem.preview
       } as ResultsListItem;
     });
   }
