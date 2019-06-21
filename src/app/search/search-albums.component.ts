@@ -1,5 +1,6 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-search-album',
@@ -12,13 +13,17 @@ export class SearchAlbumsComponent implements OnInit {
 
   searchForm: FormGroup;
   artistName: string;
+
   // route: ActivatedRouteSnapshot;
 
-  constructor(private builder: FormBuilder) {
+  constructor(private builder: FormBuilder, private route: ActivatedRoute) {
   }
 
   ngOnInit() {
     this.initForm();
+    this.route.paramMap.subscribe(params => {
+      this.updateValue(params.get('artistName'));
+    });
   }
 
   // getRout(route: ActivatedRouteSnapshot) {
@@ -34,8 +39,9 @@ export class SearchAlbumsComponent implements OnInit {
       artistName: ['', Validators.required]
     });
   }
-  updateValueFromUri(artist: string) {
-    this.searchForm.setValue({artistName: artist});
+
+  updateValue(artist: string) {
+    return this.searchForm.setValue({artistName: artist});
   }
 
   getSearch({value, valid}) {
@@ -44,6 +50,6 @@ export class SearchAlbumsComponent implements OnInit {
       return;
     }
     this.searchPhrase.emit(value.artistName);
-    // this.updateValueFromUri('abba');
+    // this.updateValue('abba');
   }
 }
