@@ -1,12 +1,17 @@
 <div *ngIf="result">
   <div class="container">
     <div class="row">
-      <div class="col-sm" *ngFor="let id of result">
+      <div class="col-md" *ngFor="let id of result">
         <div id="content-box">
           <a class="nav-link" href="{{id.link}}">
             <img src="{{id.albumCover}}" alt="Artist">
             <h3>{{id.artistName}}</h3>
             <h4>{{id.title}}</h4>
+            <div class="preview-audio">
+              <audio controls>
+                <source src="{{id.preview}}" type="audio/mpeg">
+              </audio>
+            </div>
           </a>
         </div>
       </div>
