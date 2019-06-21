@@ -7,6 +7,7 @@ const routes: Routes = [
   {
     path: 'search',
     component: SearchResultComponent,
+    runGuardsAndResolvers: 'paramsOrQueryParamsChange',
     resolve: {
       resultsList: SearchResultResolver
     }

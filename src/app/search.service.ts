@@ -11,15 +11,16 @@ import {ResultsListItem} from './interfaces/result-list-item.interface';
   providedIn: 'root'
 })
 export class SearchService {
-  constructor(private http: HttpClient, private processingService: ProcessingResultsService) {
-  }
-
   readonly DEEZER_URL = 'https://api.deezer.com/search';
   readonly ITUNES_URL = 'https://itunes.apple.com/search';
   private mergedResult: ResultsListItem[];
-  artistName: string;
+  private artist: string;
+
+  constructor(private http: HttpClient, private processingService: ProcessingResultsService) {
+  }
 
   getSearch(artist: string) {
+    this.artist = artist;
 
     const deezerSubscription = this.getSearchFromDeezer(artist).pipe(catchError(() => of({
       data: [],

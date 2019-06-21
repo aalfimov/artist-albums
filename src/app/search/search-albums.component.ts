@@ -12,6 +12,7 @@ export class SearchAlbumsComponent implements OnInit {
 
   searchForm: FormGroup;
   artistName: string;
+  // route: ActivatedRouteSnapshot;
 
   constructor(private builder: FormBuilder) {
   }
@@ -20,10 +21,21 @@ export class SearchAlbumsComponent implements OnInit {
     this.initForm();
   }
 
+  // getRout(route: ActivatedRouteSnapshot) {
+  //   return route.queryParamMap.get('artistName');
+  // }
+  // this.route.params
+  //   .switchMap((params: Params) => this.survey.getSurvey(params['artist']))
+  //   .subscribe((survey: any) => {
+  //     // update the form controls
+  //   });
   private initForm() {
     this.searchForm = this.builder.group({
       artistName: ['', Validators.required]
     });
+  }
+  updateValueFromUri(artist: string) {
+    this.searchForm.setValue({artistName: artist});
   }
 
   getSearch({value, valid}) {
@@ -32,5 +44,6 @@ export class SearchAlbumsComponent implements OnInit {
       return;
     }
     this.searchPhrase.emit(value.artistName);
+    // this.updateValueFromUri('abba');
   }
 }
