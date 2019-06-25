@@ -1,7 +1,7 @@
 <div *ngIf="result">
   <div class="container">
     <div class="row">
-      <div class="col-sm" *ngFor="let id of result">
+      <div class="col-sm" *ngFor="let id of result" >
         <div id="content-box">
           <a class="nav-link" href="{{id.link}}">
             <img src="{{id.albumCover}}" alt="Artist">
@@ -19,3 +19,34 @@
   </div>
 </div>
 <app-page-not-found *ngIf="noData()"></app-page-not-found>
+<div class="pagination-block">
+  <nav aria-label="Page navigation example">
+    <ul class="pagination">
+      <li class="page-item" *ngFor="let data of numberOfPages; let i = index">
+        <a class="page-link" href="" (click)="setPage(i)">{{i}}</a>
+      </li>
+    </ul>
+  </nav>
+<!--  <li class="page-item"><a class="page-link" href="">Previous</a></li>-->
+<!--  <li class="page-item"><a class="page-link" href="">Next</a></li>-->
+<!--  <div class="card-footer pb-0 pt-3">-->
+<!--    <jw-pagination [items]="items" (changePage)="onChangePage($event)"></jw-pagination>-->
+<!--  </div>-->
+<!--  <ul *ngIf="pager" class="pagination">-->
+<!--    <li [ngClass]="{disabled:pager.currentPage === 1}">-->
+<!--      <a (click)="setPage(1)">First</a>-->
+<!--    </li>-->
+<!--    <li [ngClass]="{disabled:pager.currentPage === 1}">-->
+<!--      <a (click)="setPage(pager.currentPage - 1)">Previous</a>-->
+<!--    </li>-->
+<!--    <li *ngFor="let page of pager" [ngClass]="{active:pager.currentPage === page}">-->
+<!--      <a (click)="setPage(page)">{{page}}</a>-->
+<!--    </li>-->
+<!--    <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">-->
+<!--      <a (click)="setPage(pager.currentPage + 1)">Next</a>-->
+<!--    </li>-->
+<!--    <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">-->
+<!--      <a (click)="setPage(pager.totalPages)">Last</a>-->
+<!--    </li>-->
+<!--  </ul>-->
+</div>
