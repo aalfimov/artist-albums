@@ -9,6 +9,8 @@ import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {SearchAlbumsComponent} from './search/search-albums.component';
 import {SearchResultComponent} from './search-result/search-result.component';
 import {JwPaginationComponent} from 'jw-angular-pagination';
+import { SearchResultPageComponent } from './search-result/search-result-page/search-result-page.component';
+import { PaginatorComponent } from './paginator/paginator.component';
 
 
 @NgModule({
@@ -17,7 +19,9 @@ import {JwPaginationComponent} from 'jw-angular-pagination';
     PageNotFoundComponent,
     SearchAlbumsComponent,
     SearchResultComponent,
-    JwPaginationComponent
+    JwPaginationComponent,
+    SearchResultPageComponent,
+    PaginatorComponent
   ],
   imports: [
     BrowserModule,
