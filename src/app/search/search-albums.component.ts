@@ -23,6 +23,7 @@ export class SearchAlbumsComponent implements OnInit {
       this.updateValue(params.get('artistName'));
     });
   }
+
   private initForm() {
     this.searchForm = this.builder.group({
       artistName: ['', Validators.required]
