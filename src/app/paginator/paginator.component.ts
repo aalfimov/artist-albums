@@ -7,22 +7,21 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 })
 export class PaginatorComponent implements OnInit {
 
-  total1: number;
-  currentPage1: number;
-  peerPage1: number;
+  total: number;
+  currentPage: number;
+  peerPage: number;
 
-  @Input() set total(total: number) {
-    this.total1 = total;
+  @Input() set setTotal(total: number) {
+    this.total = total;
   }
 
-  @Input() set currentPage(currentPage: number) {
-    this.currentPage1 = currentPage;
+  @Input() set setCurrentPage(currentPage: number) {
+    this.currentPage = currentPage;
   }
 
-  @Input() set peerPage(peerPage: number) {
-    this.peerPage1 = peerPage;
+  @Input() set setPeerPage(peerPage: number) {
+    this.peerPage = peerPage;
   }
-
 
   @Output() onPage = new EventEmitter<number>();
   @Output() onNext = new EventEmitter<number>();
@@ -38,21 +37,17 @@ export class PaginatorComponent implements OnInit {
   }
 
   private initPagesArray() {
-    return Array(Math.ceil(this.total1 / this.peerPage1)).fill(1).map((item, index) => {
+    return Array(Math.ceil(this.total / this.peerPage)).fill(1).map((item, index) => {
       return index + 1;
     });
   }
 
-  paginationEnabled() {
-    return this.total1 > this.peerPage1;
-  }
-
   isOnFirst() {
-    return this.currentPage1 === 1;
+    return this.currentPage === 1;
   }
 
   isOnLast() {
-    return this.pagesNumbers.length === this.currentPage1;
+    return this.initPagesArray().length === this.currentPage;
   }
 
   get pagesArray() {
@@ -60,19 +55,18 @@ export class PaginatorComponent implements OnInit {
   }
 
   onPrevPressed() {
-    this.onPrev.emit(this.currentPage1 - 1);
+    this.onPrev.emit(this.currentPage - 1);
   }
 
   onPagePressed(page: number) {
     this.onPage.emit(page);
   }
 
-
   onNextPressed() {
-    this.onNext.emit(this.currentPage1 + 1);
+    this.onNext.emit(this.currentPage + 1);
   }
 
   isCurrent(page: number) {
-    return this.currentPage1 === page;
+    return this.currentPage === page;
   }
 }

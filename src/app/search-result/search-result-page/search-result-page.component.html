@@ -1,20 +1,16 @@
-<div *ngIf="resultsList">
-  <div class="container">
-    <div class="row">
-      <div class="col-sm" *ngFor="let id of resultsList">
-        <div id="content-box">
-          <a class="nav-link" href="{{id.link}}">
-            <img src="{{id.albumCover}}" alt="Artist">
-            <h3 class="artistName">{{id.artistName}}</h3>
-            <h4>{{id.title}}</h4>
-            <div class="preview-audio">
-              <audio controls>
-                <source src="{{id.preview}}" type="audio/mpeg">
-              </audio>
-            </div>
-          </a>
+<div *ngIf="resultsList" class="container">
+  <div class="row">
+    <div class="col-sm-4" *ngFor="let id of resultsList">
+      <a id="content-box" class="nav-link" href="{{id.link}}">
+        <h3 class="artistName">{{id.artistName}}</h3>
+        <img src="{{id.albumCover}}" alt="Artist">
+        <p>{{id.title}}</p>
+        <div class="preview-audio">
+          <audio controls>
+            <source src="{{id.preview}}" type="audio/mpeg">
+          </audio>
         </div>
-      </div>
+      </a>
     </div>
   </div>
 </div>

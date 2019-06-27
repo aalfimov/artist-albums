@@ -1,7 +1,7 @@
 <app-search-result-page [list]="currentPageList"></app-search-result-page>
-<app-paginator [total]="getTotal()"
-               [currentPage]="currentPage"
-               [peerPage]="itemsPeerPage"
+<app-paginator [setTotal]="getTotal()"
+               [setCurrentPage]="currentPage"
+               [setPeerPage]="itemsPeerPage"
                (onPage)="pagePressed($event)"
                (onNext)="nextPressed($event)"
                (onPrev)="prevPressed($event)">

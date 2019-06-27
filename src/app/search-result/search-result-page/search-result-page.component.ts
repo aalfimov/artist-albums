@@ -14,7 +14,8 @@ export class SearchResultPageComponent implements OnInit {
     this.resultsList = items;
   }
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }

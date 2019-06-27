@@ -1,10 +1,6 @@
 <div class="pagination-block">
-  <button class="btn btn-primary pag-btn" [disabled]="isOnFirst()" (click)="onPrevPressed()"><< Prev</button>
-  <button class="btn btn-primary pag-btn" [disabled]="isCurrent(page)" *ngFor="let page of pagesArray" (click)="onPagePressed(page)">{{page}}</button>
-  <button class="btn btn-primary pag-btn" [disabled]="isOnLast()" (click)="onNextPressed()">Next >></button>
+  <button class="btn btn-dark pag-btn" [disabled]="isOnFirst()" (click)="onPrevPressed()"><< Prev</button>
+  <button class="btn btn-dark pag-btn" [disabled]="isCurrent(page)" *ngFor="let page of pagesArray"
+          (click)="onPagePressed(page)">{{page}}</button>
+  <button class="btn btn-dark pag-btn" [disabled]="isOnLast()" (click)="onNextPressed()">Next >></button>
 </div>
-<!--
-
-
-
--->

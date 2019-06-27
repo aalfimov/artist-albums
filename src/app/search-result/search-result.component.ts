@@ -12,7 +12,7 @@ export class SearchResultComponent implements OnInit {
   allItems: ResultsListItem[] = [];
   pageOfItems: ResultsListItem[];
   currentPage = 1;
-  itemsPeerPage = 5;
+  itemsPeerPage = 6;
 
   constructor(private route: ActivatedRoute,
               private router: Router) {
@@ -44,10 +44,6 @@ export class SearchResultComponent implements OnInit {
   getTotal() {
     return this.allItems.length;
   }
-
-  // getPeerPage() {
-  //   return Math.ceil(this.allItems.length / this.itemsPeerPage);
-  // }
 
   pagePressed(page: number) {
     this.loadPage(page);
