@@ -18,6 +18,7 @@ export class PaginatorComponent implements OnInit {
   @Input() set currentPage(currentPage: number) {
     this.currentPage1 = currentPage;
   }
+
   @Input() set peerPage(peerPage: number) {
     this.peerPage1 = peerPage;
   }
@@ -29,7 +30,8 @@ export class PaginatorComponent implements OnInit {
 
   pagesNumbers: number[];
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
     this.pagesNumbers = this.initPagesArray();
@@ -45,12 +47,12 @@ export class PaginatorComponent implements OnInit {
     return this.total1 > this.peerPage1;
   }
 
-  isFirst() {
+  isOnFirst() {
     return this.currentPage1 === 1;
   }
 
-  isLast() {
-    return this.total1 === this.currentPage1;
+  isOnLast() {
+    return this.pagesNumbers.length === this.currentPage1;
   }
 
   get pagesArray() {
