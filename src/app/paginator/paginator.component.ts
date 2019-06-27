@@ -27,13 +27,11 @@ export class PaginatorComponent implements OnInit {
   @Output() onNext = new EventEmitter<number>();
   @Output() onPrev = new EventEmitter<number>();
 
-  pagesNumbers: number[];
-
   constructor() {
   }
 
   ngOnInit() {
-    this.pagesNumbers = this.initPagesArray();
+    this.initPagesArray();
   }
 
   private initPagesArray() {

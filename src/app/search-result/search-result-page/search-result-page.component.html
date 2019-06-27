@@ -1,6 +1,6 @@
 <div *ngIf="resultsList" class="container">
   <div class="row">
-    <div class="col-sm-4" *ngFor="let id of resultsList">
+    <div class="col-sm-4 col-sm" *ngFor="let id of resultsList">
       <a id="content-box" class="nav-link" href="{{id.link}}">
         <h3 class="artistName">{{id.artistName}}</h3>
         <img src="{{id.albumCover}}" alt="Artist">
