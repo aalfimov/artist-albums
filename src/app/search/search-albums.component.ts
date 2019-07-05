@@ -1,18 +1,21 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, OnDestroy, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-search-album',
   templateUrl: './search-albums.component.html',
+  // styleUrls: `color= {{this.color}}`
   styleUrls: ['./search-albums.component.scss']
 })
-export class SearchAlbumsComponent implements OnInit {
+export class SearchAlbumsComponent implements OnInit, OnDestroy {
 
   @Output() searchPhrase = new EventEmitter<string>();
 
   searchForm: FormGroup;
   artistName: string;
+  color = '#8064A2';
+  toggle = false;
 
   constructor(private builder: FormBuilder, private route: ActivatedRoute) {
   }
@@ -40,5 +43,9 @@ export class SearchAlbumsComponent implements OnInit {
       return;
     }
     this.searchPhrase.emit(value.artistName);
+  }
+
+  ngOnDestroy() {
+    this.searchPhrase.unsubscribe();
   }
 }

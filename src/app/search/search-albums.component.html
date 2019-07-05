@@ -1,17 +1,25 @@
-<nav class="navbar navbar-dark bg-dark">
+<nav [ngStyle]="{'background-color': color}" class="nav-background"> <!--[ngStyle]="{'background-color': color; "}-->
   <div class="input-group">
+    <div ></div>
     <form id="artist" class="form-inline rounded mx-auto d-block" [formGroup]="searchForm"
           (submit)="getSearch(searchForm)">
-      <h2 class="title">Album Search</h2>
       <div class="input-group mb-3">
+        <h2 class="title">Album Search</h2>
         <label>
           <input formControlName="artistName" type="text" class="form-control-lg" placeholder="artist name"
                  aria-describedby="button-addon2">
         </label>
         <div class="input-group-append">
-          <button class="btn btn-outline-secondary btn-lg" type="submit" id="button-addon2" form="artist">Search
+          <button class="btn btn-dark pag-btn" type="submit" id="button-addon2" form="artist">Search
           </button>
         </div>
+        <input #ignoredInput *ngIf="toggle"
+               [style.background]="color"
+               [cpIgnoredElements]="[ignoredButton, ignoredInput]"
+               [(cpToggle)]="toggle"
+               [(colorPicker)]="color"/>
+
+        <button #ignoredButton class="btn btn-dark pag-btn" (click)="toggle=!toggle">Choose color</button>
       </div>
     </form>
   </div>

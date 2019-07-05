@@ -11,6 +11,7 @@ import {SearchResultComponent} from './search-result/search-result.component';
 import {JwPaginationComponent} from 'jw-angular-pagination';
 import {SearchResultPageComponent} from './search-result/search-result-page/search-result-page.component';
 import {PaginatorComponent} from './paginator/paginator.component';
+import {ColorPickerModule} from 'ngx-color-picker';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import {PaginatorComponent} from './paginator/paginator.component';
     AppRoutingModule,
     HttpClientJsonpModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ColorPickerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
