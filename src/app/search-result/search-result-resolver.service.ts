@@ -14,6 +14,7 @@ export class SearchResultResolver implements Resolve<Observable<ResultsListItem[
 
   resolve(route: ActivatedRouteSnapshot): Observable<ResultsListItem[]> {
     const searchName = route.queryParamMap.get('artistName');
+    console.log('resolver');
     return this.searchService.getSearch(searchName);
   }
 }

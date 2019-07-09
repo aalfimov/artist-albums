@@ -76,6 +76,7 @@ export class SearchResultComponent implements OnInit {
 
   selectDataFromResult(page: number) {
     this.pageOfItems = this.allItems.slice(this.getSkip(page), this.getSkip(page) + this.itemsPeerPage);
+    // console.log(this.pageOfItems);
   }
 
 }

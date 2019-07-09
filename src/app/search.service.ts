@@ -13,21 +13,24 @@ import {ResultsListItem} from './interfaces/result-list-item.interface';
 export class SearchService {
   readonly DEEZER_URL = 'https://api.deezer.com/search';
   readonly ITUNES_URL = 'https://itunes.apple.com/search';
-  private mergedResult: ResultsListItem[];
+  private mergedResult: ResultsListItem[] = [];
   private artist: string;
 
   constructor(private http: HttpClient, private processingService: ProcessingResultsService) {
   }
 
   getSearch(artist: string) {
+    if (artist === this.artist && !!this.mergedResult.length) {
+      return of([...this.mergedResult]);
+    }
     this.artist = artist;
 
-    const deezerSubscription = this.getSearchFromDeezer(artist).pipe(catchError(() => of({
+    const deezerSubscription = this.getSearchDataFromDeezer(artist).pipe(catchError(() => of({
       data: [],
       next: null,
       total: 0
     } as DeezerResponse)));
-    const itunesSubscription = this.getSearchFromItunes(artist).pipe(catchError(() => of({
+    const itunesSubscription = this.getSearchDataFromItunes(artist).pipe(catchError(() => of({
       resultCount: 0,
       results: []
     } as ItunesResponse)));
@@ -40,16 +43,16 @@ export class SearchService {
         this.processingService.convertResultFromDeezer(deezer.data),
         this.processingService.convertResultFromItunes(itunes.results)
       ];
-
-      return this.mergedResult = this.processingService.mergeData(normalizedData[0], normalizedData[1]);
+      this.mergedResult = this.processingService.mergeData(normalizedData[0], normalizedData[1]);
+      return this.mergedResult;
     }));
   }
 
-  getSearchFromDeezer(artist: string): Observable<DeezerResponse> {
+  getSearchDataFromDeezer(artist: string): Observable<DeezerResponse> {
     return this.http.jsonp<DeezerResponse>(`${this.DEEZER_URL}?q=${artist}&output=jsonp`, 'callback');
   }
 
-  getSearchFromItunes(artist: string): Observable<ItunesResponse> {
+  getSearchDataFromItunes(artist: string): Observable<ItunesResponse> {
     return this.http.jsonp<ItunesResponse>(`${this.ITUNES_URL}?term=${artist}`, 'callback');
   }
 }

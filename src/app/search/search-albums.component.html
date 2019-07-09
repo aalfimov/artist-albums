@@ -1,13 +1,13 @@
 <nav [ngStyle]="{'background-color': color}" class="nav-background"> <!--[ngStyle]="{'background-color': color; "}-->
   <div class="input-group">
-    <div ></div>
+    <div></div>
     <form id="artist" class="form-inline rounded mx-auto d-block" [formGroup]="searchForm"
           (submit)="getSearch(searchForm)">
       <div class="input-group mb-3">
         <h2 class="title">Album Search</h2>
         <label>
           <input formControlName="artistName" type="text" class="form-control-lg" placeholder="artist name"
-                 aria-describedby="button-addon2">
+                 aria-describedby="button-addon2" autofocus>
         </label>
         <div class="input-group-append">
           <button class="btn btn-dark pag-btn" type="submit" id="button-addon2" form="artist">Search
