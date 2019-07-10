@@ -12,6 +12,7 @@ import {JwPaginationComponent} from 'jw-angular-pagination';
 import {SearchResultPageComponent} from './search-result/search-result-page/search-result-page.component';
 import {PaginatorComponent} from './paginator/paginator.component';
 import {ColorPickerModule} from 'ngx-color-picker';
+import { ColorPickerComponent } from './color-picker/color-picker.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import {ColorPickerModule} from 'ngx-color-picker';
     SearchResultComponent,
     JwPaginationComponent,
     SearchResultPageComponent,
-    PaginatorComponent
+    PaginatorComponent,
+    ColorPickerComponent
   ],
   imports: [
     BrowserModule,

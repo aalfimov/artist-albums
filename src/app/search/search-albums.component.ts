@@ -14,7 +14,7 @@ export class SearchAlbumsComponent implements OnInit, OnDestroy {
 
   searchForm: FormGroup;
   artistName: string;
-  color = '#8064A2';
+  color = '#503264';
   toggle = false;
 
   constructor(private builder: FormBuilder, private route: ActivatedRoute) {
