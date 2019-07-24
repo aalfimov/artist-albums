@@ -13,13 +13,6 @@
           <button class="btn btn-dark pag-btn" type="submit" id="button-addon2" form="artist">Search
           </button>
         </div>
-        <input #ignoredInput *ngIf="toggle"
-               [style.background]="color"
-               [cpIgnoredElements]="[ignoredButton, ignoredInput]"
-               [(cpToggle)]="toggle"
-               [(colorPicker)]="color"/>
-
-        <button #ignoredButton class="btn btn-dark pag-btn" (click)="toggle=!toggle">Choose color</button>
       </div>
     </form>
   </div>
