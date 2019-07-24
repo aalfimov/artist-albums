@@ -19,6 +19,5 @@ export class AppComponent {
         artistName: searchPhrase
       }
     });
-    console.log(searchPhrase);
   }
 }
