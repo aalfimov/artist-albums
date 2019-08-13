@@ -11,7 +11,6 @@ import {SearchResultComponent} from './search-result/search-result.component';
 import {JwPaginationComponent} from 'jw-angular-pagination';
 import {SearchResultPageComponent} from './search-result/search-result-page/search-result-page.component';
 import {PaginatorComponent} from './paginator/paginator.component';
-import { ColorPickerComponent } from './color-picker/color-picker.component';
 
 
 @NgModule({
@@ -22,8 +21,7 @@ import { ColorPickerComponent } from './color-picker/color-picker.component';
     SearchResultComponent,
     JwPaginationComponent,
     SearchResultPageComponent,
-    PaginatorComponent,
-    ColorPickerComponent
+    PaginatorComponent
   ],
   imports: [
     BrowserModule,

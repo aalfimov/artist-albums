@@ -1,20 +1,26 @@
-<div *ngIf="resultsList" class="container">
+<div *ngIf="resultsList"
+     class="container">
   <div class="row">
-    <div class="col-sm-4 col-sm" *ngFor="let id of resultsList">
-      <a id="content-box" class="nav-link" href="{{id.link}}">
-        <h3 class="artistName">{{id.artistName}}</h3>
-        <img src="{{id.albumCover}}" alt="Artist">
+    <div class="col-sm-4 col-sm"
+         *ngFor="let id of resultsList">
+      <a id="content-box"
+         class="nav-link"
+         href="{{id.link}}">
+        <h3 class="artistName">
+          {{id.artistName}}
+        </h3>
+        <img src="{{id.albumCover}}"
+             alt="Artist">
         <p>{{id.title}}</p>
         <div class="preview-audio">
           <audio controls>
-            <source src="{{id.preview}}" type="audio/mpeg">
+            <source src="{{id.preview}}"
+                    type="audio/mpeg">
           </audio>
         </div>
       </a>
     </div>
   </div>
 </div>
-
-<app-color-picker></app-color-picker>
 
 <app-page-not-found *ngIf="noData()"></app-page-not-found>

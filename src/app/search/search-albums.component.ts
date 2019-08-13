@@ -5,7 +5,6 @@ import {ActivatedRoute} from '@angular/router';
 @Component({
   selector: 'app-search-album',
   templateUrl: './search-albums.component.html',
-  // styleUrls: `color= {{this.color}}`
   styleUrls: ['./search-albums.component.scss']
 })
 export class SearchAlbumsComponent implements OnInit, OnDestroy {
@@ -15,9 +14,9 @@ export class SearchAlbumsComponent implements OnInit, OnDestroy {
   searchForm: FormGroup;
   artistName: string;
   color = '#503264';
-  toggle = false;
 
-  constructor(private builder: FormBuilder, private route: ActivatedRoute) {
+  constructor(private builder: FormBuilder,
+              private route: ActivatedRoute) {
   }
 
   ngOnInit() {
